@@ -1,5 +1,4 @@
 import * as S from './ShowDetails.styles';
-
 import { ShowEpisodes } from 'components/ShowEpisodes/ShowEpisodes';
 import { StripHtmlFromString } from 'helpers/Utils';
 

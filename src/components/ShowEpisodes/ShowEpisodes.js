@@ -5,7 +5,7 @@ export const ShowEpisodes = ({ episodes }) => {
   return (
     <S.EpisodeList>
       {episodes.map((episode) => (
-        <S.EpisodeListItem index={`episodeList-${episode.id}`}>
+        <S.EpisodeListItem key={`episodeList-${episode.id}`}>
           <EpisodeCard
             id={episode.id}
             img={episode.image.medium}
