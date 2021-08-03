@@ -25,6 +25,10 @@ function EpisodeDetailsPage() {
     return <div>{error}</div>;
   }
 
+  if (episode === undefined) {
+    return <h1>The episode {episodeId} doesn't exist</h1>;
+  }
+
   return (
     <EpisodeDetails
       image={episode.image.medium}
