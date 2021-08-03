@@ -1,16 +1,14 @@
-import * as S from './ShowDetails.styles';
-import { ShowEpisodes } from 'components/ShowEpisodes/ShowEpisodes';
+import { useHistory } from 'react-router-dom';
+
+import * as S from './EpisodeDetails.styles';
 import { StripHtmlFromString } from 'helpers/Utils';
 
-export const ShowDetails = ({
-  showId,
-  image,
-  title,
-  description,
-  episodes,
-}) => {
+export const EpisodeDetails = ({ image, title, description }) => {
+  const history = useHistory();
+
   return (
     <S.Wrapper>
+      <S.BackButton onClick={history.goBack}>&lt; Go Back</S.BackButton>
       <S.DetailsHeader>
         <S.DetailsHeaderImage>
           <img src={image} alt={`${title} banner`} />
@@ -21,11 +19,6 @@ export const ShowDetails = ({
           <h2>{StripHtmlFromString(description)}</h2>
         </S.DetailsHeaderText>
       </S.DetailsHeader>
-
-      <S.EpisodesContainer>
-        <h3>Episodes</h3>
-        <ShowEpisodes showId={showId} episodes={episodes} />
-      </S.EpisodesContainer>
     </S.Wrapper>
   );
 };

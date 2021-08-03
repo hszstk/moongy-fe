@@ -11,10 +11,10 @@ export default function App() {
         <Route exact path="/">
           <Redirect to="/show/1955" />
         </Route>
-        <Route path="/show/:id">
+        <Route exact path="/show/:id">
           <ShowDetailsPage />
         </Route>
-        <Route path="/show/episode/:id">
+        <Route exact path="/show/:showId/episode/:episodeId">
           <EpisodeDetailsPage />
         </Route>
         <Route path="*">

@@ -59,3 +59,6 @@ export const showSlice = createSlice({
 export const { setShowData } = showSlice.actions;
 
 export default showSlice.reducer;
+
+export const selectEpisodeById = (state, episodeId) =>
+  state.show.episodes.find((episode) => episode.id === +episodeId);

@@ -27,6 +27,7 @@ function ShowDetailsPage() {
 
   return (
     <ShowDetails
+      showId={id}
       image={showDetails.image}
       title={showDetails.name}
       description={showDetails.description}

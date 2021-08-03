@@ -3,36 +3,35 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { fetchDetails } from 'store/slices/ShowSlice';
-import { ShowDetails } from 'components/ShowDetails/ShowDetails';
+import { fetchDetails, selectEpisodeById } from 'store/slices/ShowSlice';
+import { EpisodeDetails } from 'components/EpisodeDetails/EpisodeDetails';
 
-function ShowDetailsPage() {
-  const { id } = useParams();
-  const { showDetails, episodes } = useSelector((state) => state.show);
+function EpisodeDetailsPage() {
+  const { showId, episodeId } = useParams();
+  const episode = useSelector((state) => selectEpisodeById(state, episodeId));
   const showStatus = useSelector((state) => state.show.status);
   const error = useSelector((state) => state.show.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (showStatus === 'idle') {
-      dispatch(fetchDetails({ showId: id }));
+      dispatch(fetchDetails({ showId: showId }));
     }
-  }, [showStatus, dispatch, id]);
+  }, [showStatus, dispatch, showId]);
 
-  if (showStatus === 'loading') {
+  if (showStatus === 'loading' || showStatus === 'idle') {
     return <div className="loader">Loading...</div>;
   } else if (showStatus === 'failed') {
     return <div>{error}</div>;
   }
 
   return (
-    <ShowDetails
-      image={showDetails.image}
-      title={showDetails.name}
-      description={showDetails.description}
-      episodes={episodes}
+    <EpisodeDetails
+      image={episode.image.medium}
+      title={episode.name}
+      description={episode.summary}
     />
   );
 }
 
-export default ShowDetailsPage;
+export default EpisodeDetailsPage;
