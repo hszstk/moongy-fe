@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-height: 100vh;
   background-color: rgb(0 0 0 / 80%);
 `;
 
@@ -44,7 +46,9 @@ export const DetailsHeaderText = styled.div`
     line-height: 1.2;
   }
 `;
+
 export const EpisodesContainer = styled.div`
-  flex: 1;
+  height: 100%;
   padding: 0 20px;
+  overflow-y: scroll;
 `;
